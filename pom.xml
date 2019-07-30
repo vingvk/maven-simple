@@ -21,41 +21,28 @@
   
   <build>
     <plugins>
-    
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.2</version>
-        <configuration> <!-- Compile java 7 compatible bytecode -->
-          <source>1.7</source>
-          <target>1.7</target>
-        </configuration>
-      </plugin>
-      
-      <plugin>  <!-- Create sources.jar -->
-            <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-      </plugin>
-            
-      <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
+     <plugin>
+       <groupId>org.jacoco</groupId>
+		   <artifactId>jacoco-maven-plugin</artifactId>
+		   <version>0.8.2</version>
+       <configuration>
+         <destFile>${basedir}/target/coverage-reports/jacoco-unit.exe</destFile>
+         <dataFile>${basedir}/target/coverage-reports/jacoco-unit.exe</dataFile>
+       </configuration>
+       <executions>
+			 <execution>
+				<goals>
+					<goal>prepare-agent</goal>
+				</goals>
+			</execution>
+      <execution>
+        <id>jacoco-site</id>
+        <phase>package</phase>
+        <goals>
+          <goal>report</goal>
+        </goals>
+         </execution>
+       </executions>
       </plugin>
     </plugins>
   </build>
