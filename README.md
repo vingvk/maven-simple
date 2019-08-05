@@ -1,4 +1,4 @@
-# example
+# example read this okay
 
 Example Maven project generated using the  `maven-archetype-quickstart`
 
